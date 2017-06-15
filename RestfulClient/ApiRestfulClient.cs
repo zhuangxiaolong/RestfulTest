@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RestSharp.Authenticators;
 
 namespace RestfulClient
 {
@@ -23,7 +24,7 @@ namespace RestfulClient
 
             this.requestInit(method, request, headers, input);
 
-            //restClient.Authenticator = new HttpBasicAuthenticator("username", "password");
+            restClient.Authenticator = new HttpBasicAuthenticator("username", "password");
             var response = restClient.Execute(request);
 
             //if (response.Data != null)
@@ -55,7 +56,7 @@ namespace RestfulClient
             request.RequestFormat = DataFormat.Json;
 
             this.requestInit(method, request, headers, input);
-
+            restClient.Authenticator = new HttpBasicAuthenticator("username", "password");
             restClient.ExecuteAsync(request, IRR =>
             {
                 //JsonDeserializer.Deserialize(IRR.Content, typeof(TR));
@@ -137,12 +138,14 @@ namespace RestfulClient
 
         private Dictionary<string, string> GetBasicAuthorizationHeader()
         {
+            var dicHeader = new Dictionary<string, string>();
+            return dicHeader;
+            //由RestSharp的Authenticator实现
             string username = "username";
             string password = "password";
 
             string svcCredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
 
-            var dicHeader = new Dictionary<string, string>();
             dicHeader.Add("Authorization", "Basic " + svcCredentials);
             return dicHeader;
         }
