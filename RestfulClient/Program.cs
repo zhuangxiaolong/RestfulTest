@@ -21,7 +21,7 @@ namespace RestfulClient
             result = apiRestfulClient.AddProduct(p);
             Console.WriteLine(result);
 
-            result=apiRestfulClient.GetProduct(1);
+            result=apiRestfulClient.GetProduct();
             Console.WriteLine(result);
         }
     }

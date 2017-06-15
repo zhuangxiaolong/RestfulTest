@@ -124,12 +124,20 @@ namespace RestfulClient
                     new Dictionary<string, string>(),
                     new { value = p });
         }
-        public string GetProduct(int id)
+        public string GetProduct()
         {
-            return this.execute<string>(Method.GET,
+            string username = "username";
+            string password = "password";
+
+            string svcCredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
+
+            var dicHead = new Dictionary<string, string>();
+            dicHead.Add("Authorization", "Basic " + svcCredentials);
+
+            return execute<string>(Method.GET,
                     "/api/product/GetProduct",
-                    new Dictionary<string, string>(),
-                    new { id = id });
+                    dicHead,
+                    new {  });
         }
     }
 

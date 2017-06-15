@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using Model;
 using Newtonsoft.Json;
@@ -20,13 +21,12 @@ namespace RestfulServer.Controllers
         {
             return new string[] { "value1", "value2" };
         }
+        
         public string GetProduct()
         {
+            if (!Common.HTTPBasicAuthorization.CheckAuth())
+                return "未授权";
             return "value";
-        }
-        public string GetProduct(string id)
-        {
-            return "value2";
         }
 
         // POST: api/Product
@@ -34,7 +34,7 @@ namespace RestfulServer.Controllers
         {
             var tmp = value["value"].ToString();
             var p = JsonConvert.DeserializeObject<Product>(tmp);
-            return p.ToString();
+            return p.Name;
         }
 
         // PUT: api/Product/5
