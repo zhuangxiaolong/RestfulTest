@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Http;
 using Model;
 using Newtonsoft.Json;
+using RestfulServer.Common;
 
 namespace RestfulServer.Controllers
 {
+    [BasicAuthentication]  
     public class ProductController : ApiController
     {
         public string GetTime()
@@ -24,8 +26,6 @@ namespace RestfulServer.Controllers
         
         public string GetProduct()
         {
-            if (!Common.HTTPBasicAuthorization.CheckAuth())
-                return "未授权";
             return "value";
         }
 

@@ -112,32 +112,39 @@ namespace RestfulClient
         }
         public string GetTime()
         {
+            var dicHeader = GetBasicAuthorizationHeader();
             return this.execute<string>(Method.GET,
                     "/api/product/GetTime",
-                    new Dictionary<string, string>());
+                    dicHeader);
         }
 
         public string AddProduct(Model.Product p)
         {
+            var dicHeader = GetBasicAuthorizationHeader();
             return this.execute<string>(Method.POST,
                     "/api/product/AddProduct",
-                    new Dictionary<string, string>(),
+                    dicHeader,
                     new { value = p });
         }
         public string GetProduct()
+        {
+            var dicHeader = GetBasicAuthorizationHeader();
+            return execute<string>(Method.GET,
+                    "/api/product/GetProduct",
+                    dicHeader,
+                    new {  });
+        }
+
+        private Dictionary<string, string> GetBasicAuthorizationHeader()
         {
             string username = "username";
             string password = "password";
 
             string svcCredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
 
-            var dicHead = new Dictionary<string, string>();
-            dicHead.Add("Authorization", "Basic " + svcCredentials);
-
-            return execute<string>(Method.GET,
-                    "/api/product/GetProduct",
-                    dicHead,
-                    new {  });
+            var dicHeader = new Dictionary<string, string>();
+            dicHeader.Add("Authorization", "Basic " + svcCredentials);
+            return dicHeader;
         }
     }
 

@@ -10,19 +10,26 @@ namespace RestfulClient
     {
         static void Main(string[] args)
         {
-            var url = "http://localhost:1234";
-            var apiRestfulClient = new ApiRestfulClient(url);
+            try
+            {
+                var url = "http://localhost:1234";
+                var apiRestfulClient = new ApiRestfulClient(url);
 
-            var result = apiRestfulClient.GetTime();
-            Console.WriteLine(result);
+                var result = apiRestfulClient.GetTime();
+                Console.WriteLine(result);
 
-            var p = new Model.Product {Id = 1, Name = "product1"};
+                var p = new Model.Product { Id = 1, Name = "product1" };
 
-            result = apiRestfulClient.AddProduct(p);
-            Console.WriteLine(result);
+                result = apiRestfulClient.AddProduct(p);
+                Console.WriteLine(result);
 
-            result=apiRestfulClient.GetProduct();
-            Console.WriteLine(result);
+                result = apiRestfulClient.GetProduct();
+                Console.WriteLine(result);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
         }
     }
 }
