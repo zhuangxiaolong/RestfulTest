@@ -16,7 +16,6 @@ namespace RestfulServer.Common
         ///明文格式： "username" + ":" + "password"，需要Base64编码明文。
         ///HTTP头设置：Authorization: Basic [Base64编码内容]
         /// </summary>
-        /// <param name="hc">The hc.</param>
         /// <returns></returns>
         public static bool CheckAuth()
         {

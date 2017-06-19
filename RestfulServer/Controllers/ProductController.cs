@@ -11,6 +11,7 @@ using RestfulServer.Common;
 
 namespace RestfulServer.Controllers
 {
+    [MyActionFilter]
     [BasicAuthentication]  
     public class ProductController : ApiController
     {

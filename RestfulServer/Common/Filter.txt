@@ -1,0 +1,7 @@
+﻿Asp.Net MVC提供了以下几种默认的Filter：
+ 
+Filter Type 实现接口 执行时间 Default Implementation
+1 Authorization filter IAuthorizationFilter 在所有Filter和Action执行之前执行 AuthorizeAttribute
+2 Action filter IActionFilter 分别在Action执行之前和之后执行。 ActionFilterAttribute
+3 Result filter IResultFilter 分别在Action Result执行之后和之前 ResultFilterAttribute
+4 Exception filter IExceptionFilter 只有在filter,或者 action method, 或者 action result 抛出一个异常时候执行 HandleErrorAttribute

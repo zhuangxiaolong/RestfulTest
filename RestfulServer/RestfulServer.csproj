@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="Common\BasicAuthenticationAttribute.cs" />
     <Compile Include="Common\HTTPBasicAuthorization.cs" />
+    <Compile Include="Common\MyActionFilterAttribute.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -120,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Common\Filter.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
