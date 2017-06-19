@@ -108,7 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\BasicAuthHttpModule.cs" />
+    <Compile Include="Common\BasicAuthenticationAttribute.cs" />
     <Compile Include="Common\HTTPBasicAuthorization.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
